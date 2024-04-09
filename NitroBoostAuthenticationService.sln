@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Web", "NitroBoostAuthenticationService.Web\NitroBoostAuthenticationService.Web.csproj", "{680173E0-8DB6-4A73-8DF9-7793C442F630}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Core", "NitroBoostAuthenticationService.Core\NitroBoostAuthenticationService.Core.csproj", "{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Data", "NitroBoostAuthenticationService.Data\NitroBoostAuthenticationService.Data.csproj", "{334602FC-8C69-48A9-89F5-273FE912008A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Shared", "NitroBoostAuthenticationService.Shared\NitroBoostAuthenticationService.Shared.csproj", "{5A6B74EC-65DC-4A30-B488-15C50853322B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{680173E0-8DB6-4A73-8DF9-7793C442F630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{680173E0-8DB6-4A73-8DF9-7793C442F630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{680173E0-8DB6-4A73-8DF9-7793C442F630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{680173E0-8DB6-4A73-8DF9-7793C442F630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334602FC-8C69-48A9-89F5-273FE912008A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334602FC-8C69-48A9-89F5-273FE912008A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334602FC-8C69-48A9-89F5-273FE912008A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334602FC-8C69-48A9-89F5-273FE912008A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
