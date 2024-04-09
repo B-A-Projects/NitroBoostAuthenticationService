@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Shared", "NitroBoostAuthenticationService.Shared\NitroBoostAuthenticationService.Shared.csproj", "{5A6B74EC-65DC-4A30-B488-15C50853322B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Test", "NitroBoostAuthenticationService.Test\NitroBoostAuthenticationService.Test.csproj", "{536556C6-976D-4FC1-A4F8-AAC1597B1B53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536556C6-976D-4FC1-A4F8-AAC1597B1B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{536556C6-976D-4FC1-A4F8-AAC1597B1B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{536556C6-976D-4FC1-A4F8-AAC1597B1B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{536556C6-976D-4FC1-A4F8-AAC1597B1B53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
