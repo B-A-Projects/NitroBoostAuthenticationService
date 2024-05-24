@@ -1,25 +1,13 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine3.18-arm64v8 AS build
+ARG TARGETARCH
 WORKDIR /src
-COPY ["NitroBoostAuthenticationService.Web/NitroBoostAuthenticationService.Web.csproj", "NitroBoostAuthenticationService.Web/"]
-COPY ["NitroBoostAuthenticationService.Core/NitroBoostAuthenticationService.Core.csproj", "NitroBoostAuthenticationService.Core/"]
-COPY ["NitroBoostAuthenticationService.Data/NitroBoostAuthenticationService.Data.csproj", "NitroBoostAuthenticationService.Data/"]
-COPY ["NitroBoostAuthenticationService.Shared/NitroBoostAuthenticationService.Shared.csproj", "NitroBoostAuthenticationService.Shared/"]
-RUN dotnet restore "NitroBoostAuthenticationService.Web/NitroBoostAuthenticationService.Web.csproj"
 COPY . .
-WORKDIR "/src/NitroBoostAuthenticationService.Web"
-RUN dotnet build "NitroBoostAuthenticationService.Web.csproj" -c Release -o /app/build
+RUN dotnet publish "./NitroBoostAuthenticationService.Web/NitroBoostAuthenticationService.Web.csproj" -a ${TARGETARCH} -c Release -o /app/publish
 
-FROM build AS publish
-RUN dotnet publish "NitroBoostAuthenticationService.Web.csproj" -c Release -o /app/publish
-
-FROM base AS final
+FROM build AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app/publish .
+EXPOSE 7000
+EXPOSE 7001
 ENTRYPOINT ["dotnet", "NitroBoostAuthenticationService.Web.dll"]
