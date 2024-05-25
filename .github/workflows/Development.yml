@@ -17,7 +17,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.0.0
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '7.0.x'
 
       - name: Restore NuGet packages
         run: dotnet restore ./NitroBoostAuthenticationService.sln
@@ -29,13 +29,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dev-build
-          path: ./NitroBoostAuthenticationService.Web/bin/Debug/net8.0
+          path: ./NitroBoostAuthenticationService.Web/bin/Debug/net7.0
 
       - name: Upload tests as artifact
         uses: actions/upload-artifact@v4
         with:
           name: dev-test
-          path: ./NitroBoostAuthenticationService.Test/bin/Debug/net8.0
+          path: ./NitroBoostAuthenticationService.Test/bin/Debug/net7.0
 
   test:
     runs-on: ubuntu-latest
@@ -68,7 +68,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.0.0
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '7.0.x'
         
       - name: Install dotnet code coverage tools
         run: dotnet tool install --global dotnet-coverage
