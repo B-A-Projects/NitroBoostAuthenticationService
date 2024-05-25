@@ -1,14 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Web", "NitroBoostAuthenticationService.Web\NitroBoostAuthenticationService.Web.csproj", "{680173E0-8DB6-4A73-8DF9-7793C442F630}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Web", "NitroBoostAuthenticationService.Web\NitroBoostAuthenticationService.Web.csproj", "{8EE2350A-BA2C-420D-9DE6-0522ED8D1321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Core", "NitroBoostAuthenticationService.Core\NitroBoostAuthenticationService.Core.csproj", "{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Core", "NitroBoostAuthenticationService.Core\NitroBoostAuthenticationService.Core.csproj", "{59A8E83A-D929-4781-8D7B-D9584C629FAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Data", "NitroBoostAuthenticationService.Data\NitroBoostAuthenticationService.Data.csproj", "{334602FC-8C69-48A9-89F5-273FE912008A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Data", "NitroBoostAuthenticationService.Data\NitroBoostAuthenticationService.Data.csproj", "{954715E2-2FE3-485C-A778-BD22997EA701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Shared", "NitroBoostAuthenticationService.Shared\NitroBoostAuthenticationService.Shared.csproj", "{5A6B74EC-65DC-4A30-B488-15C50853322B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Shared", "NitroBoostAuthenticationService.Shared\NitroBoostAuthenticationService.Shared.csproj", "{89F05E2D-BF9B-49CF-BE59-541B6E3CD275}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Test", "NitroBoostAuthenticationService.Test\NitroBoostAuthenticationService.Test.csproj", "{536556C6-976D-4FC1-A4F8-AAC1597B1B53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroBoostAuthenticationService.Test", "NitroBoostAuthenticationService.Test\NitroBoostAuthenticationService.Test.csproj", "{09610027-2EA5-452D-A568-8243188A3D18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,25 +16,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{680173E0-8DB6-4A73-8DF9-7793C442F630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{680173E0-8DB6-4A73-8DF9-7793C442F630}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{680173E0-8DB6-4A73-8DF9-7793C442F630}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{680173E0-8DB6-4A73-8DF9-7793C442F630}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61C6D051-02EA-4B9D-B13C-2978FA67EEC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{334602FC-8C69-48A9-89F5-273FE912008A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{334602FC-8C69-48A9-89F5-273FE912008A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{334602FC-8C69-48A9-89F5-273FE912008A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{334602FC-8C69-48A9-89F5-273FE912008A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A6B74EC-65DC-4A30-B488-15C50853322B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{536556C6-976D-4FC1-A4F8-AAC1597B1B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{536556C6-976D-4FC1-A4F8-AAC1597B1B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{536556C6-976D-4FC1-A4F8-AAC1597B1B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{536556C6-976D-4FC1-A4F8-AAC1597B1B53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE2350A-BA2C-420D-9DE6-0522ED8D1321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE2350A-BA2C-420D-9DE6-0522ED8D1321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE2350A-BA2C-420D-9DE6-0522ED8D1321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE2350A-BA2C-420D-9DE6-0522ED8D1321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59A8E83A-D929-4781-8D7B-D9584C629FAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A8E83A-D929-4781-8D7B-D9584C629FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A8E83A-D929-4781-8D7B-D9584C629FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A8E83A-D929-4781-8D7B-D9584C629FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{954715E2-2FE3-485C-A778-BD22997EA701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{954715E2-2FE3-485C-A778-BD22997EA701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{954715E2-2FE3-485C-A778-BD22997EA701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{954715E2-2FE3-485C-A778-BD22997EA701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F05E2D-BF9B-49CF-BE59-541B6E3CD275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F05E2D-BF9B-49CF-BE59-541B6E3CD275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F05E2D-BF9B-49CF-BE59-541B6E3CD275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F05E2D-BF9B-49CF-BE59-541B6E3CD275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09610027-2EA5-452D-A568-8243188A3D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09610027-2EA5-452D-A568-8243188A3D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09610027-2EA5-452D-A568-8243188A3D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09610027-2EA5-452D-A568-8243188A3D18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
