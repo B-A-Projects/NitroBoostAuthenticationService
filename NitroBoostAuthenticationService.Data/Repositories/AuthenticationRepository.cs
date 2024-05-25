@@ -4,9 +4,11 @@ using NitroBoostAuthenticationService.Shared.Interfaces.Repositories;
 
 namespace NitroBoostAuthenticationService.Data.Repositories;
 
-public class AuthenticationRepository(NitroBoostAuthenticationContext context) : 
-    BaseRepository<Account>(context), IAuthenticationRepository
+public class AuthenticationRepository : 
+    BaseRepository<Account>, IAuthenticationRepository
 {
+    public AuthenticationRepository(NitroBoostAuthenticationContext context) : base(context) {}
+    
     public async Task<AccountDto?> CreateAccount(AccountDto account)
     {
         Account entity = new Account()

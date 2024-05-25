@@ -5,7 +5,7 @@ using NitroBoostAuthenticationService.Shared.Enums;
 
 namespace NitroBoostAuthenticationService.Data.Entities;
 
-public class Account()
+public class Account
 {
     [Key]
     [Column("id")]
@@ -34,6 +34,8 @@ public class Account()
     [Column("role")]
     public Role UserRole { get; set; }
 
+    public Account() {}
+    
     public AccountDto ToDto() => new AccountDto()
     {
         Id = Id,
