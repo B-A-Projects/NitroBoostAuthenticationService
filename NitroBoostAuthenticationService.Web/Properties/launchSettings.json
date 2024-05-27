@@ -14,6 +14,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
+      "commandLineArgs": "Host=35.234.101.141;Port=5432;Username=postgres;Password=YCR-200400;Database=authentication-database; cAMfNpC4fr7ceMLS7xZaJ12ScRXR7HLZzLJdpK9NPqkYqcAu3AEdS9pAxvwGH90ZYY1FQUbHw9PN6DitMnR3RGQLm2c6S01wkqEHjbgGeKAwP2G8e9nrnuGNp1Z98wyx http://nitroboost.io:5000 http://nitroboost.io:5000",
       "applicationUrl": "http://localhost:5260",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

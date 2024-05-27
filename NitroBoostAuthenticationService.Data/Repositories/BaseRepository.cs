@@ -36,9 +36,5 @@ public abstract class BaseRepository<TType> : IBaseRepository<TType> where TType
 
     public void UpdateMany(IEnumerable<TType> entities) => _context.Set<TType>().UpdateRange(entities);
 
-    public async ValueTask DisposeAsync()
-    {
-        await _context.SaveChangesAsync();
-        await _context.DisposeAsync();
-    }
+    public async ValueTask DisposeAsync() => await _context.DisposeAsync();
 }

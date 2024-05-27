@@ -85,8 +85,8 @@ public class AuthenticationService : IAuthenticationService
         SymmetricSecurityKey secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.Key));
         SigningCredentials credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
         JwtSecurityToken token = new JwtSecurityToken(
-            issuer: "http://nitroboost.io:5000",
-            audience: "nitroboost.io:5000",
+            issuer: _configuration.Issuer,
+            audience: _configuration.Audience,
             claims: GetClaims(account),
             expires: DateTime.Now.AddMinutes(5),
             signingCredentials: credentials
