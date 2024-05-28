@@ -1,9 +1,9 @@
 using System.Text;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
-using NitroBoostAuthenticationService.Shared.Interfaces.Messaging;
+using NitroBoostMessagingClient.Interfaces;
 
-namespace NitroBoostAuthenticationService.Web.Messaging;
+namespace NitroBoostMessagingClient;
 
 public class BaseSender : BaseMessager, IBaseSender
 {

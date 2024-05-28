@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\NitroBoostAuthenticationService.Shared\NitroBoostAuthenticationService.Shared.csproj" />
+      <ProjectReference Include="..\NitroBoostMessagingClient\NitroBoostMessagingClient.csproj" />
     </ItemGroup>
 
     <ItemGroup>

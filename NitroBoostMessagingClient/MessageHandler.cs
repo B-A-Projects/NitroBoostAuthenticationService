@@ -1,4 +1,4 @@
-namespace NitroBoostAuthenticationService.Web.Messaging;
+namespace NitroBoostMessagingClient;
 
 public class MessageHandler
 {

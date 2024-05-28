@@ -1,6 +1,6 @@
 using RabbitMQ.Client;
 
-namespace NitroBoostAuthenticationService.Web.Messaging;
+namespace NitroBoostMessagingClient;
 
 public abstract class BaseMessager : IDisposable
 {
