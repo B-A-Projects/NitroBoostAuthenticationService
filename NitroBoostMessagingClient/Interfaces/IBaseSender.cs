@@ -1,4 +1,4 @@
-namespace NitroBoostAuthenticationService.Shared.Interfaces.Messaging;
+namespace NitroBoostMessagingClient.Interfaces;
 
 public interface IBaseSender
 {

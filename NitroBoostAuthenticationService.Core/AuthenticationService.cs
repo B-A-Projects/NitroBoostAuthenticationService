@@ -9,6 +9,9 @@ using NitroBoostAuthenticationService.Shared.Configurations;
 using NitroBoostAuthenticationService.Shared.Enums;
 using NitroBoostAuthenticationService.Shared.Interfaces.Repositories;
 using NitroBoostAuthenticationService.Shared.Interfaces.Services;
+using NitroBoostMessagingClient.Dtos;
+using NitroBoostMessagingClient.Enums;
+using NitroBoostMessagingClient.Interfaces;
 
 namespace NitroBoostAuthenticationService.Core;
 
@@ -16,17 +19,19 @@ public class AuthenticationService : IAuthenticationService
 {
     private KeySigningConfiguration _configuration;
     private IAuthenticationRepository _repository;
+    private IBaseSender _sender;
 
     private static readonly int _keySize = 128;
     private static readonly int _iterationCount = 50000;
 
-    public AuthenticationService(KeySigningConfiguration configuration, IAuthenticationRepository repository)
+    public AuthenticationService(KeySigningConfiguration configuration, IAuthenticationRepository repository, IBaseSender sender)
     {
         _configuration = configuration;
         _repository = repository;
+        _sender = sender;
     }
     
-    public async Task<AccountDto?> CreateAccount(long profileId, string email, string password)
+    public async Task<AccountDto?> CreateAccount(string email, string password)
     {
         if (await _repository.EmailExists(email))
             throw new DuplicateNameException();
@@ -37,10 +42,16 @@ public class AuthenticationService : IAuthenticationService
             Email = email,
             Password = GenerateHash(password, out salt),
             Salt = salt,
-            ProfileId = profileId,
             UserRole = Role.User
         };
-        return await _repository.CreateAccount(account);
+        
+        account = await _repository.CreateAccount(account);
+        _sender.Send("Console", new MessageDto()
+        {
+            Action = ActionType.Add, 
+            Body = account.Id.ToString()
+        });
+        return account;
     }
     
     public async Task<string?> Authenticate(string username, string password)
@@ -56,6 +67,20 @@ public class AuthenticationService : IAuthenticationService
         if (!HashValuesMatch(password, account.Password, account.Salt))
             return null;
         return GenerateToken(account);
+    }
+
+    public async Task DeleteAccount(int accountId)
+    {
+        if (accountId < 1)
+            return;
+
+        bool isDeleted = await _repository.DeleteAccount(accountId);
+        if (isDeleted)
+            _sender.Send("Console", new MessageDto()
+            {
+                Action = ActionType.Delete, 
+                Body = accountId.ToString()
+            });
     }
 
     private byte[] GenerateHash(string input, out byte[] salt)
@@ -100,7 +125,7 @@ public class AuthenticationService : IAuthenticationService
         {
             new Claim(ClaimTypes.Email, account.Email),
             new Claim(ClaimTypes.Role, account.UserRole.ToString()),
-            new Claim("id", account.ProfileId.ToString())
+            new Claim("id", account.Id.ToString())
         };
         if (account.UniqueUsername != null)
         {

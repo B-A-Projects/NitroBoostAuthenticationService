@@ -3,10 +3,11 @@ using NitroBoostAuthenticationService.Core;
 using NitroBoostAuthenticationService.Data;
 using NitroBoostAuthenticationService.Data.Repositories;
 using NitroBoostAuthenticationService.Shared.Configurations;
-using NitroBoostAuthenticationService.Shared.Interfaces.Messaging;
 using NitroBoostAuthenticationService.Shared.Interfaces.Repositories;
 using NitroBoostAuthenticationService.Shared.Interfaces.Services;
 using NitroBoostAuthenticationService.Web.Messaging;
+using NitroBoostMessagingClient;
+using NitroBoostMessagingClient.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,17 +17,13 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+builder.Services.AddScoped<IMessageProcessor, MessageProcessor>();
 builder.Services.AddScoped<IBaseSender, BaseSender>(options => new BaseSender(args[4]));
-builder.Services.AddSingleton<IBaseReceiver, BaseReceiver>(options =>
-{
-    BaseReceiver receiver = new BaseReceiver(args[4]);
-    receiver.DataReceived += (sender, eventArgs) =>
-    {
-        new MessageHandler().ProcessMessage(eventArgs.Body.ToArray());
-        receiver.AcknowledgeMessage(eventArgs);
-    };
-    return new BaseReceiver(args[4]);
-});
+// builder.Services.AddSingleton<IBaseReceiver, BaseReceiver>(options =>
+// {
+//     MessageProcessor processor = options.GetRequiredService<MessageProcessor>();
+//     return new BaseReceiver(processor, args[4], args[5]);
+// });
 builder.Services.AddSingleton<KeySigningConfiguration>(new KeySigningConfiguration()
 {
     Key = args[1],

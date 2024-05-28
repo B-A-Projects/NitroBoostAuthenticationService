@@ -16,7 +16,6 @@ public class AuthenticationRepository :
             Email = account.Email.ToLower(),
             Password = account.Password,
             Salt = account.Salt,
-            ProfileId = account.ProfileId,
             UserRole = account.UserRole
         };
         await Add(entity);
@@ -38,4 +37,14 @@ public class AuthenticationRepository :
 
     public async Task<AccountDto?> GetAccountByEmail(string email) => 
         (await Find(x => x.Email == email)).FirstOrDefault()?.ToDto();
+
+    public async Task<bool> DeleteAccount(long accountId)
+    {
+        Account? account = (await Find(x => x.Id == accountId)).FirstOrDefault();
+        if (account == null)
+            return false;
+        Delete(account);
+        await _context.SaveChangesAsync();
+        return true;
+    }
 }

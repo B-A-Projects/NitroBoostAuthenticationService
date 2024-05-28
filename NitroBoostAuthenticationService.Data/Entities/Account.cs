@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using NitroBoostAuthenticationService.Shared;
@@ -19,10 +20,6 @@ public class Account
     public string Email { get; set; }
     
     [Required]
-    [Column("profile_id")]
-    public long ProfileId { get; set; }
-    
-    [Required]
     [Column("password")]
     public byte[] Password { get; set; }
     
@@ -33,6 +30,11 @@ public class Account
     [Required]
     [Column("role")]
     public Role UserRole { get; set; }
+    
+    [Required]
+    [Column("verified")]
+    [DefaultValue(false)]
+    public bool Verified { get; set; }
 
     public Account() {}
     
@@ -41,7 +43,6 @@ public class Account
         Id = Id,
         Email = Email,
         Password = Password,
-        ProfileId = ProfileId,
         Salt = Salt,
         UniqueUsername = UniqueUsername,
         UserRole = UserRole
@@ -51,7 +52,6 @@ public class Account
     {
         Id = Id,
         Email = Email,
-        ProfileId = ProfileId,
         UniqueUsername = UniqueUsername,
         UserRole = UserRole
     };

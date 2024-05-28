@@ -46,7 +46,7 @@ public class AuthenticationController : ControllerBase
     {
         try
         {
-            AccountDto? result = await _service.CreateAccount(credentials.ProfileId, credentials.Username, credentials.Password);
+            AccountDto? result = await _service.CreateAccount(credentials.Username, credentials.Password);
             if (result == null)
                 return BadRequest();
             return Ok(result);
