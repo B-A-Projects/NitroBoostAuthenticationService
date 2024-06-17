@@ -11,7 +11,8 @@ public abstract class BaseMessager : IDisposable
     public BaseMessager(string hostName, string userName, string password, int port, string virtualHost) => RabbitmqConnectionFactory = 
         new ConnectionFactory()
         {
-            HostName = hostName
+            HostName = hostName,
+            DispatchConsumersAsync = true
         };
     
     protected bool Connect()

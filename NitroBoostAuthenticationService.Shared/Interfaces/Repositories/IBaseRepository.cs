@@ -8,6 +8,8 @@ public interface IBaseRepository<TType> : IAsyncDisposable
 
     Task<IEnumerable<TType>> AddMany(IEnumerable<TType> entities);
 
+    Task<bool> Any(Expression<Func<TType, bool>> predicate);
+
     void Delete(TType entity);
 
     void DeleteMany(IEnumerable<TType> entities);

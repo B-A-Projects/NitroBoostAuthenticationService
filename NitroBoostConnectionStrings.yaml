@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: database-secret
+type: Opaque
+data:
+  console: SG9zdD0zNS4yMzQuMTAxLjE0MTtQb3J0PTU0MzI7VXNlcm5hbWU9cG9zdGdyZXM7UGFzc3dvcmQ9WUNSLTIwMDQwMDtEYXRhYmFzZT1jb25zb2xlLWRhdGFiYXNlOw==
+  authentication: SG9zdD0zNS4yMzQuMTAxLjE0MTtQb3J0PTU0MzI7VXNlcm5hbWU9cG9zdGdyZXM7UGFzc3dvcmQ9WUNSLTIwMDQwMDtEYXRhYmFzZT1hdXRoZW50aWNhdGlvbi1kYXRhYmFzZTs=
