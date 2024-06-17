@@ -11,19 +11,19 @@ namespace NitroBoostAuthenticationService.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<Account>(
-                name: "unique_username",
-                table: "Accounts",
-                nullable: true);
+            // migrationBuilder.AlterColumn<Account>(
+            //     name: "unique_username",
+            //     table: "Accounts",
+            //     nullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<Account>(
-                name: "unique_username",
-                table: "Accounts",
-                nullable: false);
+            // migrationBuilder.AlterColumn<Account>(
+            //     name: "unique_username",
+            //     table: "Accounts",
+            //     nullable: false);
         }
     }
 }

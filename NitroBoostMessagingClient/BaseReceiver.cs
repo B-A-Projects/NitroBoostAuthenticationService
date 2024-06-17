@@ -12,7 +12,7 @@ public class BaseReceiver : BaseMessager, IBaseReceiver
     private IMessageProcessor _processor;
     
     private IModel? _channel;
-    private EventingBasicConsumer _consumer;
+    private AsyncEventingBasicConsumer _consumer;
     private string _queueName;
 
     public BaseReceiver(IMessageProcessor processor, string hostName, string queueName, string userName = "",
@@ -37,25 +37,35 @@ public class BaseReceiver : BaseMessager, IBaseReceiver
             autoDelete: false,
             arguments: null);
 
-        _consumer = new EventingBasicConsumer(_channel);
-        _consumer.Received += DataReceived;
+        _consumer = new AsyncEventingBasicConsumer(_channel);
         _channel.BasicConsume(_queueName, false, _consumer);
+        _consumer.Received += DataReceived;
+        Console.WriteLine($"Started listening on {_queueName}!");
     }
 
     public void StopReceiving()
     {
         if ((RabbitmqConnection?.IsOpen).GetValueOrDefault())
             Disconnect();
+        Console.WriteLine($"Stopped listening!");
     }
     
     private bool TryConnect() => (RabbitmqConnection?.IsOpen).GetValueOrDefault() || Connect();
     
-    private void DataReceived(object sender, BasicDeliverEventArgs eventArgs)
+    private async Task DataReceived(object sender, BasicDeliverEventArgs eventArgs)
     {
-        _processor.ProcessMessage(JsonConvert.DeserializeObject<MessageDto>(
-            Encoding.UTF8.GetString(eventArgs.Body.ToArray()
-            )));
-        _channel?.BasicAck(eventArgs.DeliveryTag, false);
+        try
+        {
+            await _processor.ProcessMessage(JsonConvert.DeserializeObject<MessageDto>(
+                Encoding.UTF8.GetString(eventArgs.Body.ToArray()
+                )));
+            _channel?.BasicAck(eventArgs.DeliveryTag, false);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
     
     public override void Dispose()

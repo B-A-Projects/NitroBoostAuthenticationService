@@ -8,13 +8,16 @@ public abstract class BaseRepository<TType> : IBaseRepository<TType> where TType
 {
     protected NitroBoostAuthenticationContext _context;
 
-    public BaseRepository(NitroBoostAuthenticationContext context) => _context = context;
+    protected BaseRepository(NitroBoostAuthenticationContext context) => _context = context;
 
+    public async Task<bool> Any(Expression<Func<TType, bool>> predicate) =>
+        await _context.Set<TType>().AnyAsync(predicate);
+    
     public async Task<TType> Add(TType entity) => (await _context.Set<TType>().AddAsync(entity)).Entity;
 
     public async Task<IEnumerable<TType>> AddMany(IEnumerable<TType> entities)
     {
-        List<TType> returnList = new List<TType>();
+        var returnList = new List<TType>();
         foreach (TType entity in entities)
         {
             try { returnList.Add((await _context.Set<TType>().AddAsync(entity)).Entity); }

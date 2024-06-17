@@ -1,13 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Auth0.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using NitroBoostAuthenticationService.Core;
 using NitroBoostAuthenticationService.Data;
 using NitroBoostAuthenticationService.Data.Repositories;
-using NitroBoostAuthenticationService.Shared.Configurations;
 using NitroBoostAuthenticationService.Shared.Interfaces.Repositories;
 using NitroBoostAuthenticationService.Shared.Interfaces.Services;
-using NitroBoostAuthenticationService.Web.Messaging;
-using NitroBoostMessagingClient;
-using NitroBoostMessagingClient.Interfaces;
+using NitroBoostAuthenticationService.Shared.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,20 +14,35 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
-builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
-builder.Services.AddScoped<IMessageProcessor, MessageProcessor>();
-builder.Services.AddScoped<IBaseSender, BaseSender>(options => new BaseSender(args[4]));
-// builder.Services.AddSingleton<IBaseReceiver, BaseReceiver>(options =>
-// {
-//     MessageProcessor processor = options.GetRequiredService<MessageProcessor>();
-//     return new BaseReceiver(processor, args[4], args[5]);
-// });
-builder.Services.AddSingleton<KeySigningConfiguration>(new KeySigningConfiguration()
+builder.Services.AddScoped<ISaltService, SaltService>();
+builder.Services.AddScoped<ISaltRepository, SaltRepository>();
+//builder.Services.AddScoped<IBaseSender, BaseSender>(options => new BaseSender(args[4]));
+
+builder.Services.AddAuth0WebAppAuthentication(options =>
 {
-    Key = args[1],
-    Issuer = args[2],
-    Audience = args[3]
+    options.Domain = args[1];
+    options.ClientId = args[2];
+    options.Scope = "openid profile email";
+    options.OpenIdConnectEvents = new OpenIdConnectEvents()
+    {
+        OnAccessDenied = async a =>
+        {
+            Logger.Log(
+                $"ACCESS DENIED\r\nPath: {a.Request.Path}\r\nAuthorization: {a.Request.Headers.Authorization}",
+                Severity.Warning);
+            await Task.Yield();
+        },
+        OnAuthenticationFailed = async a =>
+        {
+            Logger.Log($"AUTH FAILED\r\nException: {a.Exception.Message}", Severity.Warning);
+            await Task.Yield();
+        },
+        OnRemoteFailure = async a =>
+        {
+            Logger.Log($"REMOTE FAILURE\r\nException: {a.Failure.Message}", Severity.Critical);
+            await Task.Yield();
+        }
+    };
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
