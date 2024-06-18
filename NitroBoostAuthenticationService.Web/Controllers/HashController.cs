@@ -6,6 +6,7 @@ using NitroBoostAuthenticationService.Web.Requests;
 namespace NitroBoostAuthenticationService.Web.Controllers;
 
 [ApiController]
+[AutoValidateAntiforgeryToken]
 [Route("api/authentication/hash")]
 public class HashController : ControllerBase
 {
